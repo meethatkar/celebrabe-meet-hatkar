@@ -1,11 +1,11 @@
 /**
- * Layer 4: UI Components
+ * UI Components Layer
  * Individual photo card showing image, author name, and favourite toggle button.
  */
 
 export function PhotoCard({ photo, isFavourite, onToggleFavourite }) {
   // Using optimized web resolution for snappy loading, falling back to download_url
-  const optimizedUrl = `https://picsum.photos/id/${photo.id}/600/400`
+  const optimizedUrl = `https://picsum.photos/id/${photo.id}/600/400`;
 
   return (
     <article className="group bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
@@ -18,7 +18,7 @@ export function PhotoCard({ photo, isFavourite, onToggleFavourite }) {
           onError={(e) => {
             // Fallback to raw download_url if optimized size fails
             if (e.currentTarget.src !== photo.download_url) {
-              e.currentTarget.src = photo.download_url
+              e.currentTarget.src = photo.download_url;
             }
           }}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
@@ -28,18 +28,22 @@ export function PhotoCard({ photo, isFavourite, onToggleFavourite }) {
         <button
           type="button"
           onClick={() => onToggleFavourite(photo.id)}
-          aria-label={isFavourite ? `Remove photo by ${photo.author} from favourites` : `Add photo by ${photo.author} to favourites`}
+          aria-label={
+            isFavourite
+              ? `Remove photo by ${photo.author} from favourites`
+              : `Add photo by ${photo.author} to favourites`
+          }
           className="absolute top-3 right-3 p-2.5 rounded-full backdrop-blur-md bg-white/80 hover:bg-white text-slate-700 shadow-md transition-all active:scale-90"
         >
           {/* Raw Inline SVG Heart Icon (Zero external libraries) */}
           <svg
             className={`w-5 h-5 transition-colors duration-200 ${
               isFavourite
-                ? 'fill-rose-500 text-rose-500'
-                : 'fill-transparent text-slate-500 hover:text-rose-500'
+                ? "fill-rose-500 text-rose-500"
+                : "fill-transparent text-slate-500 hover:text-rose-500"
             }`}
             stroke="currentColor"
-            strokeWidth={isFavourite ? '0' : '2'}
+            strokeWidth={isFavourite ? "0" : "2"}
             viewBox="0 0 24 24"
             aria-hidden="true"
           >
@@ -55,12 +59,17 @@ export function PhotoCard({ photo, isFavourite, onToggleFavourite }) {
       {/* Card Details */}
       <div className="p-4 flex items-center justify-between">
         <div className="truncate">
-          <p className="text-xs uppercase tracking-wider font-semibold text-slate-400">Photographer</p>
-          <h2 className="text-base font-semibold text-slate-800 truncate" title={photo.author}>
+          <p className="text-xs uppercase tracking-wider font-semibold text-slate-400">
+            Photographer
+          </p>
+          <h2
+            className="text-base font-semibold text-slate-800 truncate"
+            title={photo.author}
+          >
             {photo.author}
           </h2>
         </div>
       </div>
     </article>
-  )
+  );
 }

@@ -1,5 +1,5 @@
 /**
- * Layer 4: UI Components
+ * UI Components Layer
  * SearchBar component for real-time author filtering.
  */
 
@@ -7,7 +7,6 @@ export function SearchBar({ value, onChange }) {
   return (
     <div className="w-full max-w-xl mx-auto mb-8 px-4">
       <div className="relative flex items-center">
-        {/* Search SVG Icon (No external icon library) */}
         <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
           <svg
             className="w-5 h-5"
@@ -38,7 +37,7 @@ export function SearchBar({ value, onChange }) {
         {value && (
           <button
             type="button"
-            onClick={() => onChange({ target: { value: '' } })}
+            onClick={() => onChange({ target: { value: "" } })}
             className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 transition-colors"
             aria-label="Clear search"
           >
@@ -59,5 +58,5 @@ export function SearchBar({ value, onChange }) {
         )}
       </div>
     </div>
-  )
+  );
 }
