@@ -1,3 +1,7 @@
+import heartFilledIcon from '../assets/heart-filled.svg'
+import heartOutlineIcon from '../assets/heart-outline.svg'
+import { Button } from './Button'
+
 /**
  * UI Components Layer
  * Individual photo card showing image, author name, and favourite toggle button.
@@ -25,35 +29,23 @@ export function PhotoCard({ photo, isFavourite, onToggleFavourite }) {
         />
 
         {/* Favorite Heart Button Overlay */}
-        <button
-          type="button"
+        <Button
+          variant="icon"
           onClick={() => onToggleFavourite(photo.id)}
           aria-label={
             isFavourite
               ? `Remove photo by ${photo.author} from favourites`
               : `Add photo by ${photo.author} to favourites`
           }
-          className="absolute top-3 right-3 p-2.5 rounded-full backdrop-blur-md bg-white/80 hover:bg-white text-slate-700 shadow-md transition-all active:scale-90"
+          className="absolute top-3 right-3 p-2.5"
         >
-          {/* Raw Inline SVG Heart Icon (Zero external libraries) */}
-          <svg
-            className={`w-5 h-5 transition-colors duration-200 ${
-              isFavourite
-                ? "fill-rose-500 text-rose-500"
-                : "fill-transparent text-slate-500 hover:text-rose-500"
-            }`}
-            stroke="currentColor"
-            strokeWidth={isFavourite ? "0" : "2"}
-            viewBox="0 0 24 24"
+          <img
+            src={isFavourite ? heartFilledIcon : heartOutlineIcon}
+            alt=""
+            className="w-5 h-5 transition-transform duration-200"
             aria-hidden="true"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-            />
-          </svg>
-        </button>
+          />
+        </Button>
       </div>
 
       {/* Card Details */}

@@ -1,3 +1,7 @@
+import searchIcon from '../assets/search.svg'
+import closeIcon from '../assets/close.svg'
+import { Button } from './Button'
+
 /**
  * UI Components Layer
  * SearchBar component for real-time author filtering.
@@ -7,21 +11,8 @@ export function SearchBar({ value, onChange }) {
   return (
     <div className="w-full max-w-xl mx-auto mb-8 px-4">
       <div className="relative flex items-center">
-        <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-          <svg
-            className="w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
-          </svg>
+        <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+          <img src={searchIcon} alt="" className="w-5 h-5 opacity-70" aria-hidden="true" />
         </div>
 
         <input
@@ -35,26 +26,14 @@ export function SearchBar({ value, onChange }) {
         />
 
         {value && (
-          <button
-            type="button"
-            onClick={() => onChange({ target: { value: "" } })}
-            className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 transition-colors"
+          <Button
+            variant="ghost"
+            onClick={() => onChange({ target: { value: '' } })}
+            className="absolute inset-y-0 right-0 pr-3.5"
             aria-label="Clear search"
           >
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
+            <img src={closeIcon} alt="" className="w-4 h-4 opacity-70 hover:opacity-100 transition-opacity" aria-hidden="true" />
+          </Button>
         )}
       </div>
     </div>
